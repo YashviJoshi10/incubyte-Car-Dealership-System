@@ -143,15 +143,15 @@ npm test
 npm run test:coverage
 ```
 
-**Test Results:** 66 tests across 3 suites — all passing ✅
+**Test Results:** 66 tests across 3 suites — all passing (100% Pass Rate, **94.89% Statement Coverage**) ✅
 
-| Suite | Tests |
-|-------|-------|
-| auth.test.js | 16 |
-| vehicle.test.js | 22 |
-| inventory.test.js | 28 |
+| Suite | Tests | Stmt Coverage |
+|-------|-------|---------------|
+| `auth.test.js` | 16 | 100% |
+| `vehicle.test.js` | 22 | 88.0% |
+| `inventory.test.js` | 28 | 100% |
 
-Tests use a separate `incubyte_car_dealership_test` database that is auto-created and schema-synced on each test run.
+For full test inventory, code coverage matrix, and test isolation setup, see [TEST_REPORT.md](./TEST_REPORT.md).
 
 ---
 
