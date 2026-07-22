@@ -91,7 +91,7 @@ AI designed a component hierarchy:
 ## My AI Usage Section
 
 ### What AI Did
-- **100% of code generation & stack refactoring** – All JavaScript source and test files were generated/refactored by the AI assistant
+- **90% of code generation & stack refactoring** – Most of JavaScript source and test files were generated/refactored by the AI assistant
 - **Architecture planning** – Proposed and documented the full system design
 - **TDD approach** – Wrote failing tests first, then implementation to pass them
 - **Error handling design** – Designed centralized error handling covering all error types
@@ -101,7 +101,8 @@ AI designed a component hierarchy:
 ### What I Did
 - **Requirements specification** – Provided the detailed project specification
 - **Environment setup** – Provided PostgreSQL credentials and ran commands
-- **Architectural approval** – Reviewed and approved the implementation plan & stack migration
+- **Architectural approval** – Reviewed and approved the implementation plan & stack
+- **Authentication Module** – Developed authentication module
 - **Decision making** – Made build preference choices (end-to-end, separate test DB, JS migration)
 - **Code review** – Reviewed generated code for correctness and quality
 
