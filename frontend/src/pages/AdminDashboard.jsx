@@ -51,7 +51,7 @@ export default function AdminDashboard() {
       const updated = await vehicleApi.update(editingVehicle.id, payload);
       setVehicles((prev) => prev.map((v) => v.id === editingVehicle.id ? updated : v));
       setEditingVehicle(null);
-      showToast('✅ Vehicle updated!');
+      showToast('✅ Vehicle details updated!');
     } catch (err) {
       showToast(`❌ ${err.response?.data?.error ?? 'Failed to update vehicle.'}`);
       throw err;
@@ -126,7 +126,12 @@ export default function AdminDashboard() {
 
         {showAddForm && (
           <div className="card p-6 mb-6 border-primary-100 shadow-md animate-slide-up">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">Add New Vehicle to Inventory</h2>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold text-slate-900">Add New Vehicle to Inventory</h2>
+              <button onClick={() => setShowAddForm(false)} className="text-slate-400 hover:text-slate-600">
+                ✕
+              </button>
+            </div>
             <VehicleForm onSubmit={handleCreate} onCancel={() => setShowAddForm(false)} loading={formLoading} />
           </div>
         )}
@@ -192,8 +197,12 @@ export default function AdminDashboard() {
                           <button id={`admin-restock-btn-${vehicle.id}`} onClick={() => { setRestockModal(vehicle); setRestockQty(''); }} className="btn-success btn-sm">
                             Restock
                           </button>
-                          <button id={`admin-edit-btn-${vehicle.id}`} onClick={() => { setEditingVehicle(vehicle); setShowAddForm(false); }} className="btn-secondary btn-sm">Edit</button>
-                          <button id={`admin-delete-btn-${vehicle.id}`} onClick={() => handleDelete(vehicle.id)} className="btn-danger btn-sm">Delete</button>
+                          <button id={`admin-edit-btn-${vehicle.id}`} onClick={() => { setEditingVehicle(vehicle); setShowAddForm(false); }} className="btn-secondary btn-sm">
+                            Edit
+                          </button>
+                          <button id={`admin-delete-btn-${vehicle.id}`} onClick={() => handleDelete(vehicle.id)} className="btn-danger btn-sm">
+                            Delete
+                          </button>
                         </div>
                       </td>
                     </tr>
@@ -203,16 +212,39 @@ export default function AdminDashboard() {
             </div>
           )}
         </div>
-
-        {editingVehicle && (
-          <div className="card p-6 mt-6 border-amber-100 shadow-md animate-slide-up">
-            <h2 className="text-lg font-bold text-slate-900 mb-4">Edit: {editingVehicle.make} {editingVehicle.model}</h2>
-            <VehicleForm vehicle={editingVehicle} onSubmit={handleUpdate} onCancel={() => setEditingVehicle(null)} loading={formLoading} />
-          </div>
-        )}
       </main>
 
-      {/* Restock Modal */}
+      {/* Edit Vehicle Modal Popup */}
+      {editingVehicle && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+          <div className="card p-6 w-full max-w-2xl shadow-2xl animate-slide-up bg-white rounded-3xl overflow-hidden max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between mb-5 border-b border-slate-100 pb-3">
+              <div>
+                <span className="text-xs uppercase tracking-wider text-primary-600 font-bold">Admin Vehicle Management</span>
+                <h2 className="text-xl font-extrabold text-slate-900">
+                  Edit {editingVehicle.make} {editingVehicle.model}
+                </h2>
+              </div>
+              <button
+                onClick={() => setEditingVehicle(null)}
+                className="text-slate-400 hover:text-slate-600 p-1.5 rounded-full hover:bg-slate-100 transition-all"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <VehicleForm
+              vehicle={editingVehicle}
+              onSubmit={handleUpdate}
+              onCancel={() => setEditingVehicle(null)}
+              loading={formLoading}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Restock Modal Popup */}
       {restockModal && (
         <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
           <div className="card p-6 w-full max-w-sm shadow-xl animate-slide-up">
@@ -235,7 +267,7 @@ export default function AdminDashboard() {
       )}
 
       {toast && (
-        <div className="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl animate-slide-up text-sm font-medium z-50">
+        <div className="fixed bottom-6 right-6 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl animate-slide-up text-sm font-medium z-50">
           {toast}
         </div>
       )}
