@@ -11,6 +11,12 @@ const createVehicleSchema = z.object({
       .int('Quantity must be an integer')
       .min(0, 'Quantity cannot be negative'),
     imageUrl: z.string().url('Invalid image URL').optional().or(z.literal('')),
+    year: z.number().int().min(1900).max(2030).optional(),
+    fuelType: z.string().optional(),
+    transmission: z.string().optional(),
+    mileage: z.string().optional(),
+    seating: z.number().int().positive().optional(),
+    description: z.string().optional(),
   }),
 });
 
@@ -23,6 +29,12 @@ const updateVehicleSchema = z.object({
       price: z.number().positive().optional(),
       quantity: z.number().int().min(0).optional(),
       imageUrl: z.string().url('Invalid image URL').optional().or(z.literal('')),
+      year: z.number().int().min(1900).max(2030).optional(),
+      fuelType: z.string().optional(),
+      transmission: z.string().optional(),
+      mileage: z.string().optional(),
+      seating: z.number().int().positive().optional(),
+      description: z.string().optional(),
     })
     .refine((data) => Object.keys(data).length > 0, {
       message: 'At least one field must be provided for update',
