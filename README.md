@@ -208,16 +208,16 @@ For full API documentation, see [API_DOCS.md](./API_DOCS.md).
 ![Vehicle Specifications](./screenshots/vehicle_details.png)
 
 ### 3. Interactive Checkout & Booking Modal
-![Interactive Checkout Modal](./screenshots/checkout_modal.png)
+![Interactive Checkout Modal](./screenshots/purchase.png)
 
-### 4. Booking Receipt & Tax Invoice
-![Booking Receipt](./screenshots/purchase_receipt.png)
+### 4. User Login
+![Booking Receipt](./screenshots/login.png)
 
-### 5. Admin Fleet Management Panel
-![Admin Management Panel](./screenshots/admin_panel.png)
+### 5. Admin Management Panel
+![Admin Management Panel](./screenshots/admin.png)
 
 ### 6. Admin Vehicle Edit Dialog Popup
-![Admin Vehicle Edit Modal](./screenshots/admin_edit_modal.png)
+![Admin Vehicle Edit Modal](./screenshots/vehicle_edit.png)
 
 ---
 
