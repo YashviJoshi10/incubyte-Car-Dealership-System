@@ -7,7 +7,7 @@ A full-stack Car Dealership Inventory Management System built with modern techno
 ### Backend
 - **Runtime**: Node.js
 - **Framework**: Express.js
-- **Language**: TypeScript
+- **Language**: JavaScript (Node.js ES6 / CommonJS)
 - **Database**: PostgreSQL
 - **ORM**: Prisma
 - **Auth**: JWT + bcrypt
@@ -16,7 +16,7 @@ A full-stack Car Dealership Inventory Management System built with modern techno
 
 ### Frontend
 - **Framework**: React 18
-- **Language**: TypeScript
+- **Language**: JavaScript (JSX)
 - **Build Tool**: Vite
 - **Styling**: Tailwind CSS v3
 - **Routing**: React Router v6
@@ -36,19 +36,19 @@ incubyte/
 │   │   ├── repositories/   # Data access layer (Prisma)
 │   │   ├── routes/         # Express routers
 │   │   ├── services/       # Business logic
-│   │   ├── types/          # TypeScript types
+│   │   ├── types/          # AppError class
 │   │   ├── validators/     # Zod schemas
-│   │   ├── app.ts
-│   │   └── server.ts
+│   │   ├── app.js
+│   │   └── server.js
 │   ├── prisma/
 │   │   └── schema.prisma
 │   ├── tests/
-│   │   ├── auth.test.ts
-│   │   ├── vehicle.test.ts
-│   │   ├── inventory.test.ts
-│   │   └── globalSetup.ts
+│   │   ├── auth.test.js
+│   │   ├── vehicle.test.js
+│   │   ├── inventory.test.js
+│   │   └── globalSetup.js
 │   ├── .env.example
-│   ├── jest.config.ts
+│   ├── jest.config.js
 │   └── package.json
 ├── frontend/
 │   ├── src/
@@ -56,9 +56,8 @@ incubyte/
 │   │   ├── components/     # Reusable UI components
 │   │   ├── context/        # AuthContext
 │   │   ├── pages/          # Login, Register, Dashboard, Admin
-│   │   ├── types/          # Shared TS types
-│   │   ├── App.tsx
-│   │   └── main.tsx
+│   │   ├── App.jsx
+│   │   └── main.jsx
 │   ├── index.html
 │   └── package.json
 ├── README.md
@@ -148,9 +147,9 @@ npm run test:coverage
 
 | Suite | Tests |
 |-------|-------|
-| auth.test.ts | 16 |
-| vehicle.test.ts | 22 |
-| inventory.test.ts | 28 |
+| auth.test.js | 16 |
+| vehicle.test.js | 22 |
+| inventory.test.js | 28 |
 
 Tests use a separate `incubyte_car_dealership_test` database that is auto-created and schema-synced on each test run.
 
@@ -221,13 +220,3 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for full deployment instructions.
 This project was developed with the assistance of **Antigravity (Google DeepMind)** AI coding assistant.
 
 See [PROMPTS.md](./PROMPTS.md) for the full interaction log and AI usage description.
-
-### How AI Assisted This Project
-1. **Architecture Design** – AI proposed the layered architecture (Repository → Service → Controller) and database schema
-2. **TDD Test Writing** – All 66 tests were written by AI first (failing), then implementation followed
-3. **Code Generation** – AI generated all TypeScript source files following SOLID principles
-4. **Error Handling** – AI designed centralized error middleware covering Zod, AppError, and Prisma errors
-5. **Frontend Design** – AI designed the UI component system with Tailwind CSS
-6. **Documentation** – AI generated README, API docs, deployment guide, and PROMPTS.md
-
-Human contributions: Requirements specification, database credentials, architectural approval, and code review.
