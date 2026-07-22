@@ -25,8 +25,8 @@
 2. Connect your GitHub repository
 3. Set the following:
    - **Root Directory**: `backend`
-   - **Build Command**: `npm install && npx prisma generate && npx prisma db push && npm run build`
-   - **Start Command**: `node dist/server.js`
+   - **Build Command**: `npm install && npx prisma generate && npx prisma db push`
+   - **Start Command**: `node src/server.js`
 4. Add Environment Variables:
    ```
    DATABASE_URL=<your-supabase-connection-string>
@@ -64,9 +64,9 @@
 
 ## Backend CORS Update
 
-Before deploying, update the CORS config in `backend/src/app.ts` to allow your Vercel domain:
+Before deploying, update the CORS config in `backend/src/app.js` to allow your Vercel domain:
 
-```typescript
+```javascript
 app.use(cors({
   origin: [
     'https://your-app.vercel.app',
