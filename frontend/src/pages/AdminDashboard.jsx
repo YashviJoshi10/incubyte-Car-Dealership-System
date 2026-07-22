@@ -94,7 +94,7 @@ export default function AdminDashboard() {
   const totalUnits = vehicles.reduce((sum, v) => sum + v.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 w-full overflow-x-hidden">
       <Navbar />
       <main className="page-container">
         {/* Header */}

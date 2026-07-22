@@ -123,11 +123,11 @@ export default function Dashboard() {
   const outOfStockCount = vehicles.filter((v) => v.quantity === 0).length;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 w-full overflow-x-hidden">
       <Navbar />
 
       {/* Hero Banner */}
-      <div className="bg-slate-900 text-white relative overflow-hidden">
+      <div className="bg-slate-900 text-white relative overflow-hidden w-full">
         <div className="absolute inset-0 bg-gradient-to-r from-primary-950 via-slate-900 to-slate-950 opacity-90" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 relative z-10">
           <div className="max-w-2xl">
