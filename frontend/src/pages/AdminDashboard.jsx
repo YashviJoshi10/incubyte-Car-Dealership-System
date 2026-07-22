@@ -159,8 +159,20 @@ export default function AdminDashboard() {
                   {vehicles.map((vehicle) => (
                     <tr key={vehicle.id} className="hover:bg-slate-50 transition-colors">
                       <td className="px-6 py-4">
-                        <p className="font-semibold text-slate-900">{vehicle.make} {vehicle.model}</p>
-                        <p className="text-xs text-slate-400">{vehicle.id.slice(0, 8)}...</p>
+                        <div className="flex items-center gap-3">
+                          <img
+                            src={vehicle.imageUrl || 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80'}
+                            alt={`${vehicle.make} ${vehicle.model}`}
+                            className="w-12 h-9 object-cover rounded-lg shadow-sm bg-slate-100"
+                            onError={(e) => {
+                              e.currentTarget.src = 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=400&q=80';
+                            }}
+                          />
+                          <div>
+                            <p className="font-semibold text-slate-900">{vehicle.make} {vehicle.model}</p>
+                            <p className="text-[11px] text-slate-400">ID: {vehicle.id.slice(0, 8)}...</p>
+                          </div>
+                        </div>
                       </td>
                       <td className="px-6 py-4"><span className="badge-indigo">{vehicle.category}</span></td>
                       <td className="px-6 py-4 font-semibold text-slate-800">${vehicle.price.toLocaleString()}</td>

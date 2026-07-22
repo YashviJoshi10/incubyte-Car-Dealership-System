@@ -11,6 +11,7 @@ export default function VehicleForm({ vehicle = null, onSubmit, onCancel, loadin
     category: vehicle?.category ?? '',
     price: vehicle?.price?.toString() ?? '',
     quantity: vehicle?.quantity?.toString() ?? '',
+    imageUrl: vehicle?.imageUrl ?? '',
   });
 
   const [error, setError] = useState('');
@@ -23,6 +24,7 @@ export default function VehicleForm({ vehicle = null, onSubmit, onCancel, loadin
         category: vehicle.category,
         price: vehicle.price.toString(),
         quantity: vehicle.quantity.toString(),
+        imageUrl: vehicle.imageUrl ?? '',
       });
     }
   }, [vehicle]);
@@ -43,7 +45,14 @@ export default function VehicleForm({ vehicle = null, onSubmit, onCancel, loadin
     if (isNaN(quantity) || quantity < 0) { setError('Quantity must be a non-negative integer.'); return; }
 
     try {
-      await onSubmit({ make: form.make, model: form.model, category: form.category, price, quantity });
+      await onSubmit({
+        make: form.make,
+        model: form.model,
+        category: form.category,
+        price,
+        quantity,
+        imageUrl: form.imageUrl.trim() || undefined,
+      });
     } catch (err) {
       setError(err.response?.data?.error ?? 'An error occurred.');
     }
@@ -71,9 +80,13 @@ export default function VehicleForm({ vehicle = null, onSubmit, onCancel, loadin
           <label className="label" htmlFor="v-price">Price ($)</label>
           <input id="v-price" type="number" placeholder="e.g. 25000" min={0} step={0.01} value={form.price} onChange={(e) => setForm((p) => ({ ...p, price: e.target.value }))} className="input" required />
         </div>
-        <div className="sm:col-span-2">
+        <div>
           <label className="label" htmlFor="v-quantity">Quantity</label>
           <input id="v-quantity" type="number" placeholder="e.g. 5" min={0} step={1} value={form.quantity} onChange={(e) => setForm((p) => ({ ...p, quantity: e.target.value }))} className="input" required />
+        </div>
+        <div>
+          <label className="label" htmlFor="v-image">Image URL (Optional)</label>
+          <input id="v-image" type="url" placeholder="https://images.unsplash.com/..." value={form.imageUrl} onChange={(e) => setForm((p) => ({ ...p, imageUrl: e.target.value }))} className="input" />
         </div>
       </div>
 

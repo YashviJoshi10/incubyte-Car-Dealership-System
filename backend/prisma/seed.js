@@ -6,21 +6,62 @@ const prisma = new PrismaClient();
 const SALT_ROUNDS = 10;
 
 const DUMMY_VEHICLES = [
-  { make: 'Toyota', model: 'Camry', category: 'Sedan', price: 26400, quantity: 8 },
-  { make: 'Toyota', model: 'RAV4', category: 'SUV', price: 31500, quantity: 5 },
-  { make: 'Honda', model: 'Civic', category: 'Sedan', price: 23950, quantity: 12 },
-  { make: 'Honda', model: 'CR-V', category: 'SUV', price: 30100, quantity: 3 },
-  { make: 'Ford', model: 'F-150', category: 'Truck', price: 38500, quantity: 4 },
-  { make: 'Ford', model: 'Mustang', category: 'Coupe', price: 32500, quantity: 2 },
-  { make: 'Chevrolet', model: 'Silverado 1500', category: 'Truck', price: 36800, quantity: 6 },
-  { make: 'Tesla', model: 'Model 3', category: 'Electric', price: 38990, quantity: 7 },
-  { make: 'Tesla', model: 'Model Y', category: 'Electric', price: 44990, quantity: 1 },
-  { make: 'BMW', model: 'M3', category: 'Coupe', price: 76000, quantity: 2 },
-  { make: 'Mercedes-Benz', model: 'C-Class', category: 'Sedan', price: 46850, quantity: 0 },
-  { make: 'Hyundai', model: 'Tucson', category: 'SUV', price: 27500, quantity: 9 },
-  { make: 'Toyota', model: 'Prius', category: 'Hybrid', price: 27950, quantity: 4 },
-  { make: 'Porsche', model: '911 Carrera', category: 'Coupe', price: 114400, quantity: 1 },
-  { make: 'Jeep', model: 'Wrangler', category: 'SUV', price: 33295, quantity: 0 }
+  {
+    make: 'Tesla',
+    model: 'Model 3 Performance',
+    category: 'Electric',
+    price: 48990,
+    quantity: 6,
+    imageUrl: 'https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    make: 'Porsche',
+    model: '911 Carrera S',
+    category: 'Coupe',
+    price: 120500,
+    quantity: 2,
+    imageUrl: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    make: 'BMW',
+    model: 'M3 Competition',
+    category: 'Coupe',
+    price: 76000,
+    quantity: 4,
+    imageUrl: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    make: 'Ford',
+    model: 'Mustang GT',
+    category: 'Coupe',
+    price: 38300,
+    quantity: 3,
+    imageUrl: 'https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    make: 'Toyota',
+    model: 'Camry XSE',
+    category: 'Sedan',
+    price: 28620,
+    quantity: 9,
+    imageUrl: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    make: 'Range Rover',
+    model: 'Sport HSE',
+    category: 'SUV',
+    price: 83600,
+    quantity: 2,
+    imageUrl: 'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    make: 'Ford',
+    model: 'F-150 Raptor',
+    category: 'Truck',
+    price: 78385,
+    quantity: 0, // Out of stock demo
+    imageUrl: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
+  },
 ];
 
 async function main() {
@@ -60,7 +101,7 @@ async function main() {
     });
   }
 
-  console.log(`🚗 Seeded ${DUMMY_VEHICLES.length} vehicles successfully!`);
+  console.log(`🚗 Seeded ${DUMMY_VEHICLES.length} vehicles with high-resolution image URLs successfully!`);
 }
 
 main()
